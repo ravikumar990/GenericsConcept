@@ -1,41 +1,26 @@
 package com.genericcode;
 
-public class MaximumNumber<T extends Comparable> {
-	T firstValue, secondValue, thirdValue;
-
-	// constructor
-	public MaximumNumber(T firstValue, T secondValue, T thirdValue) {
-		super();
-		this.firstValue = firstValue;
-		this.secondValue = secondValue;
-		this.thirdValue = thirdValue;
-	}
+public class MaximumNumber {
 
 	public static void main(String[] args) {
-		// providing the type using generics at runtime
-		MaximumNumber<Integer> maxInt = new MaximumNumber<Integer>(10, 30, 12);
-		maxInt.findMax();
+		Integer[] intArr = { 19, 1339, 999, 995 };
+		Float[] floatArr = { 15.55f, 14.65f, 15.22f };
+		String[] strArr = { "RAMESH", "Ramesh", "ramesh" };
 
-		MaximumNumber<Float> maxFloat = new MaximumNumber<Float>(10.33f, 10.44f, 10.45f);
-		maxFloat.findMax();
-
-		MaximumNumber<String> maxString = new MaximumNumber<String>("ram", "ramesh", "rama");
-		maxString.findMax();
+		// call generic method
+		findMax(intArr);
+		findMax(floatArr);
+		findMax(strArr);
 	}
 
-	public <E extends Comparable> void findMax() {
-		T max = firstValue;
+	public static <E extends Comparable<E>> void findMax(E[] arr) {
 
-		// using compareTo method
-		if (secondValue.compareTo(max) > 0) {
-			max = secondValue;
+		E maximum = arr[0];
+		for (int i = 1; i < arr.length; i++) {
+			if (maximum.compareTo(arr[i]) < 0) {
+				maximum = arr[i];
+			}
 		}
-		if (thirdValue.compareTo(max) > 0) {
-			max = thirdValue;
-		}
-
-		// printing the maximum among three String objects
-		System.out.println("Maximum is " + max);
-
+		System.out.println("maximum is " + maximum);
 	}
 }
