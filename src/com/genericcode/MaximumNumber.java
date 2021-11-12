@@ -3,23 +3,26 @@ package com.genericcode;
 public class MaximumNumber {
 
 	public static void main(String[] args) {
-		// Three String objects initialization
-		String firstNumber = "ram";
-		String secondNumber = "ramesh";
-		String thirdNumber = "rama";
+		findMax(10, 30, 12); // finding maximum for integers
+		findMax(10.33f, 10.44f, 10.45f); // finding maximum for floats
+		findMax("ram", "ramesh", "rama"); // finding maximum for Strings
 
-		String max = firstNumber;
+	}
+
+	// reliability to choose any type of variable at method level
+	public static <E extends Comparable> void findMax(E firstValue, E secondValue, E thirdValue) {
+		E max = firstValue;
 
 		// using compareTo method
-		if (secondNumber.compareTo(max) > 0) {
-			max = secondNumber;
+		if (secondValue.compareTo(max) > 0) {
+			max = secondValue;
 		}
-		if (thirdNumber.compareTo(max) > 0) {
-			max = thirdNumber;
+		if (thirdValue.compareTo(max) > 0) {
+			max = thirdValue;
 		}
 
 		// printing the maximum among three String objects
-		System.out.println("Maximum string is " + max);
-	}
+		System.out.println("Maximum is " + max);
 
+	}
 }
