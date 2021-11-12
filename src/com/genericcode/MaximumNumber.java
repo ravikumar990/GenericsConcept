@@ -1,17 +1,30 @@
 package com.genericcode;
 
-public class MaximumNumber {
+public class MaximumNumber<T extends Comparable> {
+	T firstValue, secondValue, thirdValue;
 
-	public static void main(String[] args) {
-		findMax(10, 30, 12); // finding maximum for integers
-		findMax(10.33f, 10.44f, 10.45f); // finding maximum for floats
-		findMax("ram", "ramesh", "rama"); // finding maximum for Strings
-
+	// constructor
+	public MaximumNumber(T firstValue, T secondValue, T thirdValue) {
+		super();
+		this.firstValue = firstValue;
+		this.secondValue = secondValue;
+		this.thirdValue = thirdValue;
 	}
 
-	// reliability to choose any type of variable at method level
-	public static <E extends Comparable> void findMax(E firstValue, E secondValue, E thirdValue) {
-		E max = firstValue;
+	public static void main(String[] args) {
+		// providing the type using generics at runtime
+		MaximumNumber<Integer> maxInt = new MaximumNumber<Integer>(10, 30, 12);
+		maxInt.findMax();
+
+		MaximumNumber<Float> maxFloat = new MaximumNumber<Float>(10.33f, 10.44f, 10.45f);
+		maxFloat.findMax();
+
+		MaximumNumber<String> maxString = new MaximumNumber<String>("ram", "ramesh", "rama");
+		maxString.findMax();
+	}
+
+	public <E extends Comparable> void findMax() {
+		T max = firstValue;
 
 		// using compareTo method
 		if (secondValue.compareTo(max) > 0) {
