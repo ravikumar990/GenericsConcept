@@ -13,6 +13,7 @@ public class MaximumNumber {
 		findMax(strArr);
 	}
 
+	// method to find max value
 	public static <E extends Comparable<E>> void findMax(E[] arr) {
 
 		E maximum = arr[0];
@@ -21,6 +22,12 @@ public class MaximumNumber {
 				maximum = arr[i];
 			}
 		}
-		System.out.println("maximum is " + maximum);
+		printMax(maximum);
 	}
+
+	// print method to print the obtained max value
+	public static <E> void printMax(E max) {
+		System.out.println("Among the three the maximum is " + max);
+	}
+
 }
